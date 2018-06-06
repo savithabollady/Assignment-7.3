@@ -1,2 +1,31 @@
-
 Create a box and whisker plot by class using mtcars dataset.
+ANSWERS:
+
+BOX PLOTs:
+
+library(gridExtra)
+library(corrgram)
+ggplot(mtcars, aes(x=factor(am),y=mpg,fill=factor(am)))+
+  geom_boxplot(notch=F)+ 
+  scale_x_discrete("Transmission")+
+  scale_y_continuous("Miles per Gallon")+
+  ggtitle("MPG by Transmission Type")
+
+plot1 <- ggplot(mtcars, aes(x=factor(am),y=mpg,fill=factor(am)))+
+  geom_boxplot(notch=F)+facet_grid(.~cyl)+scale_x_discrete("Transmission")+
+  scale_y_continuous("Miles per Gallon")+ggtitle("MPG by Transmission Type & Cylinder")
+
+plot2 <- ggplot(mtcars, aes(x=factor(am),y=mpg,fill=factor(am)))+
+  geom_boxplot(notch=F)+facet_grid(.~vs)+scale_x_discrete("Transmission")+
+  scale_y_continuous("Miles per Gallon")+ggtitle("MPG by Transmission Type & VS")
+
+plot3 <- ggplot(mtcars, aes(x=factor(am),y=mpg,fill=factor(am)))+
+  geom_boxplot(notch=F)+facet_grid(.~gear)+scale_x_discrete("Transmission")+
+  scale_y_continuous("Miles per Gallon")+ggtitle("MPG by Transmission Type & Gears")
+
+plot4 <- ggplot(mtcars, aes(x=factor(am),y=mpg,fill=factor(am)))+
+  geom_boxplot(notch=F)+facet_grid(.~carb)+scale_x_discrete("Transmission")+
+  scale_y_continuous("Miles per Gallon")+ggtitle("MPG by Transmission Type & Carburetors")
+grid.arrange(plot1, plot2, plot3, plot3, nrow=2, ncol=2)
+
+##A box-and-whisker plot is a boxplot that shows variability outside the upper and lower quartiles
